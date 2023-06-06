@@ -33,30 +33,59 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LortWftcEmU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <h3><center>JavaScript Click Counter</center></h3>
-<div>
-    <center><h3 id="counter-label">0</h3></center>
-</div>
-<center>
-    <div>
-        <button onclick="incrementClick()">Click Me</button>
-        <button onclick="resetCounter()">Reset</button>
-    </div>
-</center>
-<script>
-var counterVal = 0;
+ <tr>
+    <td>one</td>
+    <td>two</td>
+    <td>total</td>
+  </tr>
+  <tr>
+    <td id="one">1</td>
+    <td id="two">2</td>
+    <td id="total">0</td>
+  </tr>
+</table>
 
-function incrementClick() {
-    updateDisplay(++counterVal);
-}
 
-function resetCounter() {
-    counterVal = 0;
-    updateDisplay(counterVal);
-}
+var increaseBtn = document.getElementById("increase");
+var oneElem = document.getElementById("one");
+var decreaseBtn = document.querySelector("#decrease");
+var totalBtn = document.getElementById("totalBtn");
+var twoElem = document.getElementById("two");
 
-function updateDisplay(val) {
-    document.getElementById("counter-label").innerHTML = val;
-}
+var totalElem = document.getElementById("totalNum");
+
+var input1Elem = document.getElementById("input1");
+var input2Elem = document.getElementById("input2");
+
+let clickerCount = 0;
+
+var displayCount = document.querySelector("#count");
+
+increaseBtn.addEventListener("click",function(){
+  clickerCount+=1;
+  displayCount.innerHTML = clickerCount;
+  oneElem.innerHTML = clickerCount;
+  twoElem.innerHTML = clickerCount + 3;
+  
+  let one = Number(oneElem.textContent)
+  let two = Number(twoElem.textContent)
+  
+  totalElem.innerHTML = one + two
+  
+});
+
+decreaseBtn.addEventListener("click",function(){
+  clickerCount-=1;
+  displayCount.innerHTML = clickerCount;
+});
+
+totalBtn.addEventListener("click",function(){
+  let one = Number(input1Elem.value)
+   let two = Number(input2Elem.value)
+   console.log(one, two, input1Elem.value)
+  totalElem.innerHTML = one + two;
+});
+
 </script>
 
 </body>
